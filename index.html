@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BisnisPro - Solusi Bisnis Profesional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --metal-black: #0a0a0a;
+            --metal-dark: #1a1a1a;
+            --metal-medium: #2d2d2d;
+            --metal-light: #3a3a3a;
+            --dark-blue: #0a1a3a;
+            --medium-blue: #1e3a8a;
+            --light-blue: #2563eb;
+            --accent-blue: #3b82f6;
+            --electric-blue: #60a5fa;
+            --text-light: #f8fafc;
+            --text-gray: #cbd5e1;
+            --text-dark: #94a3b8;
+            --gradient-metal: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            --gradient-blue: linear-gradient(135deg, #1e3a8a, #0a1a3a);
+            --gradient-accent: linear-gradient(45deg, #3b82f6, #60a5fa);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--metal-black);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .app-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(to right, var(--metal-black), var(--dark-blue));
+            padding: 18px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.9rem;
+            font-weight: 800;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 1.05rem;
+            padding: 8px 5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        nav ul li a i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+        
+        nav ul li a:hover {
+            color: var(--electric-blue);
+        }
+        
+        nav ul li a.active {
+            color: var(--electric-blue);
+            font-weight: 600;
+        }
+        
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--electric-blue);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Main Content */
+        main {
+            flex: 1;
+            padding: 40px 0;
+        }
+        
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Hero Section - Home Page */
+        .hero {
+            padding: 80px 0 100px;
+            text-align: center;
+            background: var(--gradient-blue);
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="M0,0V100H1000V0C800,50 600,70 400,60 200,50 100,30 0,0Z" fill="%230a0a0a" opacity="0.2"/></svg>');
+            background-size: cover;
+            background-position: bottom;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, var(--electric-blue), var(--text-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto 50px;
+            font-weight: 300;
+        }
+        
+        /* Options Grid */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .option-card {
+            background: linear-gradient(145deg, var(--metal-dark), var(--dark-blue));
+            border-radius: 16px;
+            padding: 45px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(96, 165, 250, 0.15);
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .option-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-accent);
+        }
+        
+        .option-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+            border-color: rgba(96, 165, 250, 0.4);
+        }
+        
+        .option-icon {
+            font-size: 3.8rem;
+            margin-bottom: 25px;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .option-card h3 {
+            font-size: 1.9rem;
+            margin-bottom: 18px;
+            color: var(--text-light);
+        }
+        
+        .option-card p {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        /* Page Titles */
+        .page-title {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 25px;
+            position: relative;
+        }
+        
+        .page-title h2 {
+            font-size: 2.8rem;
+            color: var(--text-light);
+            font-weight: 700;
+        }
+        
+        .page-title p {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 15px auto 0;
+        }
+        
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+        
+        /* Guidance Page */
+        .guide-section {
+            background: linear-gradient(145deg, var(--metal-dark), var(--metal-medium));
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(96, 165, 250, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .guide-section h3 {
+            font-size: 1.8rem;
+            color: var(--electric-blue);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .guide-section h3 i {
+            margin-right: 15px;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .step-list {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+        
+        .step-list li {
+            margin-bottom: 25px;
+            padding-left: 60px;
+            position: relative;
+            color: var(--text-gray);
+        }
+        
+        .step-list li::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-accent);
+            color: var(--text-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .step-list li h4 {
+            color: var(--text-light);
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+        }
+        
+        .video-container {
+            background: var(--metal-black);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+            border: 1px solid rgba(96, 165, 250, 0.1);
+        }
+        
+        .video-placeholder {
+            background: linear-gradient(145deg, var(--metal-medium), var(--dark-blue));
+            border-radius: 12px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .video-placeholder i {
+            font-size: 5rem;
+            color: var(--electric-blue);
+            margin-bottom: 20px;
+        }
+        
+        /* Products Page */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 35px;
+            margin-bottom: 60px;
+        }
+        
+        .product-card {
+            background: linear-gradient(145deg, var(--metal-dark), var(--metal-medium));
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(96, 165, 250, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(96, 165, 250, 0.3);
+        }
+        
+        .product-img {
+            height: 200px;
+            background: linear-gradient(145deg, var(--medium-blue), var(--dark-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--electric-blue);
+        }
+        
+        .product-content {
+            padding: 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-content h3 {
+            font-size: 1.6rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+        
+        .product-content p {
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            flex: 1;
+        }
+        
+        .product-price {
+            font-size: 1.8rem;
+            color: var(--electric-blue);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--gradient-accent);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent-blue);
+            color: var(--accent-blue);
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background: var(--gradient-accent);
+            color: white;
+            border-color: transparent;
+        }
+        
+        /* Information Page */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 35px;
+            margin-bottom: 60px;
+        }
+        
+        .news-card {
+            background: linear-gradient(145deg, var(--metal-dark), var(--metal-medium));
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(96, 165, 250, 0.1);
+        }
+        
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
+        }
+        
+        .news-header {
+            padding: 25px 25px 15px;
+            border-bottom: 1px solid rgba(96, 165, 250, 0.1);
+        }
+        
+        .news-header h3 {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+        
+        .news-date {
+            color: var(--electric-blue);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .news-content {
+            padding: 20px 25px 25px;
+            color: var(--text-gray);
+        }
+        
+        .contact-section {
+            background: linear-gradient(145deg, var(--metal-dark), var(--dark-blue));
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+        
+        .contact-section h3 {
+            font-size: 1.8rem;
+            color: var(--electric-blue);
+            margin-bottom: 25px;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-item i {
+            font-size: 1.8rem;
+            color: var(--electric-blue);
+            margin-right: 15px;
+            width: 50px;
+            height: 50px;
+            background: rgba(96, 165, 250, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contact-item div h4 {
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+        
+        .contact-item div p {
+            color: var(--text-gray);
+        }
+        
+        /* Feedback Page */
+        .feedback-form {
+            background: linear-gradient(145deg, var(--metal-dark), var(--metal-medium));
+            border-radius: 16px;
+            padding: 45px;
+            margin-bottom: 60px;
+            border: 1px solid rgba(96, 165, 250, 0.1);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 16px 20px;
+            background: var(--metal-black);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            border-radius: 10px;
+            color: var(--text-light);
+            font-size: 1.05rem;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--electric-blue);
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 180px;
+            resize: vertical;
+        }
+        
+        .rating-section {
+            margin-bottom: 30px;
+        }
+        
+        .rating-title {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        
+        .rating-stars {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .star {
+            font-size: 2.2rem;
+            color: var(--metal-light);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .star.active {
+            color: #fbbf24;
+        }
+        
+        .star:hover {
+            color: #fbbf24;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-item input {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            accent-color: var(--electric-blue);
+        }
+        
+        .checkbox-item label {
+            color: var(--text-gray);
+            margin-bottom: 0;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(to right, var(--dark-blue), var(--metal-black));
+            padding: 60px 0 30px;
+            margin-top: auto;
+            border-top: 1px solid rgba(59, 130, 246, 0.1);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h4 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: var(--electric-blue);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient-accent);
+        }
+        
+        .footer-column p, .footer-column a {
+            color: var(--text-gray);
+            margin-bottom: 12px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--electric-blue);
+            transform: translateX(5px);
+        }
+        
+        .footer-column a i {
+            margin-right: 10px;
+            width: 20px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            width: 45px;
+            height: 45px;
+            background: rgba(96, 165, 250, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--electric-blue);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: var(--gradient-accent);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .options-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--metal-dark);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                z-index: 999;
+            }
+            
+            nav ul.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .guide-section, .feedback-form, .contact-section {
+                padding: 30px 20px;
+            }
+            
+            .products-grid, .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 60px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .option-card {
+                padding: 35px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header & Navigation -->
+        <header>
+            <div class="container nav-container">
+                <div class="logo">
+                    <i class="fas fa-crown"></i>BisnisPro
+                </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav>
+                    <ul id="navMenu">
+                        <li><a href="#" class="nav-link active" data-page="home"><i class="fas fa-home"></i> Beranda</a></li>
+                        <li><a href="#" class="nav-link" data-page="guidance"><i class="fas fa-compass"></i> Guidance</a></li>
+                        <li><a href="#" class="nav-link" data-page="products"><i class="fas fa-box-open"></i> Product</a></li>
+                        <li><a href="#" class="nav-link" data-page="information"><i class="fas fa-info-circle"></i> Information</a></li>
+                        <li><a href="#" class="nav-link" data-page="feedback"><i class="fas fa-comment-dots"></i> Masukan</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <div class="container">
+                <!-- Home Page -->
+                <section id="home-page" class="page active">
+                    <div class="hero">
+                        <div class="hero-content">
+                            <h1>Solusi Bisnis Profesional untuk Kesuksesan Anda</h1>
+                            <p>Kami menyediakan layanan terbaik dengan pendekatan inovatif untuk mengembangkan bisnis Anda. Temukan panduan, produk, informasi, dan berikan masukan untuk pengalaman yang lebih baik.</p>
+                            
+                            <!-- 4 Pilihan Utama -->
+                            <div class="options-grid">
+                                <div class="option-card" data-page="guidance">
+                                    <div class="option-icon">
+                                        <i class="fas fa-compass"></i>
+                                    </div>
+                                    <h3>Guidance</h3>
+                                    <p>Panduan langkah demi langkah untuk mengembangkan bisnis Anda dengan strategi yang terbukti efektif.</p>
+                                </div>
+                                
+                                <div class="option-card" data-page="products">
+                                    <div class="option-icon">
+                                        <i class="fas fa-box-open"></i>
+                                    </div>
+                                    <h3>Product</h3>
+                                    <p>Jelajahi produk dan layanan unggulan kami yang dirancang khusus untuk kebutuhan bisnis Anda.</p>
+                                </div>
+                                
+                                <div class="option-card" data-page="information">
+                                    <div class="option-icon">
+                                        <i class="fas fa-info-circle"></i>
+                                    </div>
+                                    <h3>Information</h3>
+                                    <p>Dapatkan informasi terbaru seputar industri, berita perusahaan, dan perkembangan terbaru.</p>
+                                </div>
+                                
+                                <div class="option-card" data-page="feedback">
+                                    <div class="option-icon">
+                                        <i class="fas fa-comment-dots"></i>
+                                    </div>
+                                    <h3>Masukan</h3>
+                                    <p>Berikan feedback, saran, dan testimoni untuk membantu kami meningkatkan layanan.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 80px;">
+                        <div class="page-title">
+                            <h2>Mengapa Memilih Kami?</h2>
+                            <p>Kami menghadirkan solusi bisnis yang komprehensif dengan pendekatan personal dan profesional.</p>
+                        </div>
+                        
+                        <div class="guide-section">
+                            <h3><i class="fas fa-star"></i> Keunggulan Layanan Kami</h3>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; margin-top: 20px;">
+                                <div style="background: rgba(96, 165, 250, 0.05); padding: 25px; border-radius: 12px; border-left: 4px solid var(--electric-blue);">
+                                    <h4 style="color: var(--electric-blue); margin-bottom: 10px;"><i class="fas fa-bullseye"></i> Fokus pada Hasil</h4>
+                                    <p style="color: var(--text-gray);">Setiap strategi dirancang untuk mencapai target bisnis yang terukur.</p>
+                                </div>
+                                
+                                <div style="background: rgba(96, 165, 250, 0.05); padding: 25px; border-radius: 12px; border-left: 4px solid var(--electric-blue);">
+                                    <h4 style="color: var(--electric-blue); margin-bottom: 10px;"><i class="fas fa-users"></i> Tim Profesional</h4>
+                                    <p style="color: var(--text-gray);">Didukung oleh ahli dengan pengalaman lebih dari 10 tahun di industri.</p>
+                                </div>
+                                
+                                <div style="background: rgba(96, 165, 250, 0.05); padding: 25px; border-radius: 12px; border-left: 4px solid var(--electric-blue);">
+                                    <h4 style="color: var(--electric-blue); margin-bottom: 10px;"><i class="fas fa-lightbulb"></i> Inovatif</h4>
+                                    <p style="color: var(--text-gray);">Selalu mengadopsi teknologi dan metode terbaru untuk solusi bisnis.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Guidance Page -->
+                <section id="guidance-page" class="page">
+                    <div class="page-title">
+                        <h2>Business Guidance</h2>
+                        <p>Panduan lengkap untuk mengembangkan bisnis Anda dari awal hingga sukses</p>
+                    </div>
+                    
+                    <div class="guide-section">
+                        <h3><i class="fas fa-road"></i> Roadmap Pengembangan Bisnis</h3>
+                        <ol class="step-list">
+                            <li>
+                                <h4>Analisis Pasar dan Riset</h4>
+                                <p>Memahami landscape pasar, kompetitor, dan kebutuhan target audiens. Lakukan riset mendalam untuk mengidentifikasi peluang dan tantangan.</p>
+                            </li>
+                            <li>
+                                <h4>Pembuatan Strategi Bisnis</h4>
+                                <p>Membangun rencana bisnis yang komprehensif termasuk model bisnis, positioning, dan roadmap eksekusi.</p>
+                            </li>
+                            <li>
+                                <h4>Implementasi Sistem</h4>
+                                <p>Menerapkan sistem operasional, teknologi, dan proses yang diperlukan untuk menjalankan bisnis secara efektif.</p>
+                            </li>
+                            <li>
+                                <h4>Pengembangan Tim dan Sumber Daya</h4>
+                                <p>Membangun tim yang kompeten dan menyiapkan sumber daya yang dibutuhkan untuk pertumbuhan bisnis.</p>
+                            </li>
+                            <li>
+                                <h4>Monitoring dan Optimasi</h4>
+                                <p>Melacak performa bisnis, menganalisis data, dan melakukan optimasi berkelanjutan untuk meningkatkan hasil.</p>
+                            </li>
+                        </ol>
+                    </div>
+                    
+                    <div class="guide-section">
+                        <h3><i class="fas fa-chart-line"></i> Strategi Pemasaran Efektif</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-top: 25px;">
+                            <div style="background: rgba(96, 165, 250, 0.05); padding: 25px; border-radius: 12px;">
+                                <h4 style="color: var(--electric-blue); margin-bottom: 10px;"><i class="fas fa-bullhorn"></i> Digital Marketing</h4>
+                                <p style="color: var(--text-gray);">Manfaatkan platform digital untuk menjangkau audiens yang lebih luas dengan biaya efektif.</p>
+                            </div>
+                            
+                            <div style="background: rgba(96, 165, 250, 0.05); padding: 25px; border-radius: 12px;">
+                                <h4 style="color: var(--electric-blue); margin-bottom: 10px;"><i class="fas fa-handshake"></i> Relationship Building</h4>
+                                <p style="color: var(--text-gray);">Bangun hubungan jangka panjang dengan pelanggan melalui layanan yang personal dan berkualitas.</p>
+                            </div>
+                            
+                            <div style="background: rgba(96, 165, 250, 0.05); padding: 25px; border-radius: 12px;">
+                                <h4 style="color: var(--electric-blue); margin-bottom: 10px;"><i class="fas fa-award"></i> Brand Development</h4>
+                                <p style="color: var(--text-gray);">Kembangkan identitas merek yang kuat dan konsisten untuk membedakan diri dari kompetitor.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="guide-section">
+                        <h3><i class="fas fa-video"></i> Video Panduan</h3>
+                        <div class="video-container">
+                            <div class="video-placeholder">
+                                <i class="fas fa-play-circle"></i>
+                                <h3 style="color: var(--text-light); margin-top: 20px;">Panduan Membangun Strategi Bisnis</h3>
+                                <p style="color: var(--text-gray); margin-top: 10px;">Durasi: 15:30 | Level: Pemula</p>
+                                <button class="btn" style="margin-top: 30px;"><i class="fas fa-play"></i> Putar Video</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Products Page -->
+                <section id="products-page" class="page">
+                    <div class="page-title">
+                        <h2>Produk & Layanan</h2>
+                        <p>Solusi bisnis komprehensif yang dirancang untuk berbagai kebutuhan perusahaan</p>
+                    </div>
+                    
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-img">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="product-content">
+                                <h3>Konsultasi Bisnis Strategis</h3>
+                                <p>Layanan konsultasi menyeluruh untuk membantu Anda mengembangkan strategi bisnis yang efektif dan berkelanjutan.</p>
+                                <div class="product-price">Rp 15.000.000</div>
+                                <button class="btn">Detail Layanan</button>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-img">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <div class="product-content">
+                                <h3>Pengembangan Sistem Bisnis</h3>
+                                <p>Membangun sistem operasional dan teknologi yang terintegrasi untuk efisiensi bisnis yang lebih baik.</p>
+                                <div class="product-price">Rp 25.000.000</div>
+                                <button class="btn">Detail Layanan</button>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-img">
+                                <i class="fas fa-users-gear"></i>
+                            </div>
+                            <div class="product-content">
+                                <h3>Pelatihan dan Development Tim</h3>
+                                <p>Program pelatihan khusus untuk meningkatkan kompetensi tim Anda dalam menghadapi tantangan bisnis.</p>
+                                <div class="product-price">Rp 8.500.000</div>
+                                <button class="btn">Detail Layanan</button>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-img">
+                                <i class="fas fa-magnifying-glass-chart"></i>
+                            </div>
+                            <div class="product-content">
+                                <h3>Analisis Pasar dan Riset</h3>
+                                <p>Layanan riset mendalam untuk memahami pasar, kompetitor, dan peluang bisnis yang tersedia.</p>
+                                <div class="product-price">Rp 12.000.000</div>
+                                <button class="btn">Detail Layanan</button>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-img">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div class="product-content">
+                                <h3>Digital Marketing Solution</h3>
+                                <p>Strategi pemasaran digital terintegrasi untuk meningkatkan brand awareness dan konversi penjualan.</p>
+                                <div class="product-price">Rp 18.000.000</div>
+                                <button class="btn">Detail Layanan</button>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-img">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="product-content">
+                                <h3>Dukungan dan Maintenance</h3>
+                                <p>Layanan dukungan berkelanjutan untuk memastikan sistem bisnis Anda berjalan optimal.</p>
+                                <div class="product-price">Rp 5.000.000/bulan</div>
+                                <button class="btn">Detail Layanan</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 40px;">
+                        <h3 style="color: var(--text-light); margin-bottom: 20px; font-size: 1.8rem;">Butuh Solusi Khusus?</h3>
+                        <p style="color: var(--text-gray); max-width: 700px; margin: 0 auto 30px;">Kami dapat membuat paket khusus sesuai kebutuhan bisnis Anda. Hubungi kami untuk konsultasi gratis.</p>
+                        <button class="btn" style="padding: 16px 40px;"><i class="fas fa-calendar-check"></i> Jadwalkan Konsultasi</button>
+                    </div>
+                </section>
+
+                <!-- Information Page -->
+                <section id="information-page" class="page">
+                    <div class="page-title">
+                        <h2>Information & Update</h2>
+                        <p>Informasi terbaru seputar industri, berita perusahaan, dan perkembangan bisnis</p>
+                    </div>
+                    
+                    <div class="news-grid">
+                        <div class="news-card">
+                            <div class="news-header">
+                                <h3>Strategi Bisnis Pasca Pandemi</h3>
+                                <div class="news-date"><i class="far fa-calendar"></i> 15 Oktober 2023</div>
+                            </div>
+                            <div class="news-content">
+                                <p>Perubahan landscape bisnis pasca pandemi membutuhkan pendekatan baru. Pelajari bagaimana perusahaan dapat beradaptasi dan berkembang dalam era new normal.</p>
+                                <button class="btn-outline" style="margin-top: 20px; width: 100%;">Baca Selengkapnya</button>
+                            </div>
+                        </div>
+                        
+                        <div class="news-card">
+                            <div class="news-header">
+                                <h3>Teknologi AI dalam Optimasi Bisnis</h3>
+                                <div class="news-date"><i class="far fa-calendar"></i> 8 Oktober 2023</div>
+                            </div>
+                            <div class="news-content">
+                                <p>Kecerdasan artifisial menjadi game changer dalam operasional bisnis. Temukan cara implementasi AI untuk meningkatkan efisiensi dan pengambilan keputusan.</p>
+                                <button class="btn-outline" style="margin-top: 20px; width: 100%;">Baca Selengkapnya</button>
+                            </div>
+                        </div>
+                        
+                        <div class="news-card">
+                            <div class="news-header">
+                                <h3>BisnisPro Raih Penghargaan Inovasi 2023</h3>
+                                <div class="news-date"><i class="far fa-calendar"></i> 1 Oktober 2023</div>
+                            </div>
+                            <div class="news-content">
+                                <p>Kami dengan bangga mengumumkan bahwa BisnisPro menerima penghargaan "Inovasi Bisnis Terbaik 2023" untuk solusi konsultasi berbasis data yang kami kembangkan.</p>
+                                <button class="btn-outline" style="margin-top: 20px; width: 100%;">Baca Selengkapnya</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-section">
+                        <h3><i class="fas fa-address-card"></i> Informasi Kontak</h3>
+                        <p style="color: var(--text-gray); margin-bottom: 30px;">Hubungi kami untuk informasi lebih lanjut atau konsultasi gratis mengenai solusi bisnis yang Anda butuhkan.</p>
+                        
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h4>Alamat Kantor</h4>
+                                    <p>Jl. Sudirman No. 123, Jakarta Selatan</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <h4>Telepon</h4>
+                                    <p>+62 21 1234 5678</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <h4>Email</h4>
+                                    <p>info@bisnispro.co.id</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <h4>Jam Operasional</h4>
+                                    <p>Senin - Jumat: 08:00 - 17:00 WIB</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 40px; display: flex; gap: 20px; flex-wrap: wrap;">
+                            <button class="btn"><i class="fas fa-phone"></i> Hubungi Kami</button>
+                            <button class="btn-outline"><i class="fas fa-map-marker-alt"></i> Kunjungi Kantor</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Feedback Page -->
+                <section id="feedback-page" class="page">
+                    <div class="page-title">
+                        <h2>Masukan & Testimoni</h2>
+                        <p>Berikan masukan Anda untuk membantu kami meningkatkan kualitas layanan</p>
+                    </div>
+                    
+                    <div class="feedback-form">
+                        <form id="feedbackForm">
+                            <div class="form-group">
+                                <label for="name">Nama Lengkap</label>
+                                <input type="text" id="name" class="form-control" placeholder="Masukkan nama lengkap Anda" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" class="form-control" placeholder="Masukkan alamat email Anda" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="category">Kategori Masukan</label>
+                                <select id="category" class="form-control" required>
+                                    <option value="">Pilih kategori masukan</option>
+                                    <option value="product">Produk/Layanan</option>
+                                    <option value="support">Dukungan Pelanggan</option>
+                                    <option value="website">Website & Pengalaman Pengguna</option>
+                                    <option value="general">Umum/Saran</option>
+                                </select>
+                            </div>
+                            
+                            <div class="rating-section">
+                                <div class="rating-title">Rating Kepuasan</div>
+                                <div class="rating-stars">
+                                    <div class="star" data-value="1"><i class="fas fa-star"></i></div>
+                                    <div class="star" data-value="2"><i class="fas fa-star"></i></div>
+                                    <div class="star" data-value="3"><i class="fas fa-star"></i></div>
+                                    <div class="star" data-value="4"><i class="fas fa-star"></i></div>
+                                    <div class="star" data-value="5"><i class="fas fa-star"></i></div>
+                                </div>
+                                <input type="hidden" id="rating" value="0">
+                                <div id="rating-text" style="color: var(--text-gray); font-style: italic;"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Masukan Detail</label>
+                                <textarea id="message" class="form-control" placeholder="Ceritakan pengalaman Anda atau berikan saran untuk perbaikan layanan kami" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Bolehkah kami mengutip testimoni Anda?</label>
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item">
+                                        <input type="radio" id="quote-yes" name="allowQuote" value="yes">
+                                        <label for="quote-yes">Ya, boleh</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="radio" id="quote-no" name="allowQuote" value="no" checked>
+                                        <label for="quote-no">Tidak, hanya sebagai masukan internal</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Bidang yang ingin Anda beri masukan (boleh pilih lebih dari satu)</label>
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="area1" name="areas" value="quality">
+                                        <label for="area1">Kualitas Layanan</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="area2" name="areas" value="response">
+                                        <label for="area2">Responsivitas Tim</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="area3" name="areas" value="price">
+                                        <label for="area3">Harga & Nilai</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="area4" name="areas" value="innovation">
+                                        <label for="area4">Inovasi & Solusi</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn" style="width: 100%; padding: 18px; font-size: 1.1rem;">
+                                <i class="fas fa-paper-plane"></i> Kirim Masukan
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 40px;">
+                        <h3 style="color: var(--text-light); margin-bottom: 20px; font-size: 1.8rem;">Testimoni Klien</h3>
+                        <p style="color: var(--text-gray); max-width: 800px; margin: 0 auto 30px;">Lihat apa kata klien kami tentang layanan BisnisPro</p>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px;">
+                            <div style="background: rgba(96, 165, 250, 0.05); padding: 30px; border-radius: 12px; border: 1px solid rgba(96, 165, 250, 0.1);">
+                                <div style="color: #fbbf24; margin-bottom: 15px;">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <p style="color: var(--text-gray); font-style: italic; margin-bottom: 20px;">"BisnisPro membantu kami mengembangkan strategi pemasaran yang meningkatkan penjualan sebesar 40% dalam 6 bulan."</p>
+                                <div style="color: var(--text-light); font-weight: 600;">- Budi Santoso, CEO TechCorp</div>
+                            </div>
+                            
+                            <div style="background: rgba(96, 165, 250, 0.05); padding: 30px; border-radius: 12px; border: 1px solid rgba(96, 165, 250, 0.1);">
+                                <div style="color: #fbbf24; margin-bottom: 15px;">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <p style="color: var(--text-gray); font-style: italic; margin-bottom: 20px;">"Pelatihan tim yang diberikan sangat berkualitas dan langsung applicable. Tim kami menjadi lebih produktif dan efisien."</p>
+                                <div style="color: var(--text-light); font-weight: 600;">- Sari Dewi, HRD Manager</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-column">
+                        <h4>BisnisPro</h4>
+                        <p>Solusi bisnis profesional untuk pertumbuhan perusahaan Anda. Kami hadir dengan inovasi dan pengalaman untuk kesuksesan bersama.</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Menu Cepat</h4>
+                        <a href="#" class="footer-nav" data-page="home"><i class="fas fa-chevron-right"></i> Beranda</a>
+                        <a href="#" class="footer-nav" data-page="guidance"><i class="fas fa-chevron-right"></i> Guidance</a>
+                        <a href="#" class="footer-nav" data-page="products"><i class="fas fa-chevron-right"></i> Product</a>
+                        <a href="#" class="footer-nav" data-page="information"><i class="fas fa-chevron-right"></i> Information</a>
+                        <a href="#" class="footer-nav" data-page="feedback"><i class="fas fa-chevron-right"></i> Masukan</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Layanan</h4>
+                        <a href="#"><i class="fas fa-chevron-right"></i> Konsultasi Bisnis</a>
+                        <a href="#"><i class="fas fa-chevron-right"></i> Strategi Pemasaran</a>
+                        <a href="#"><i class="fas fa-chevron-right"></i> Pengembangan Sistem</a>
+                        <a href="#"><i class="fas fa-chevron-right"></i> Pelatihan Perusahaan</a>
+                        <a href="#"><i class="fas fa-chevron-right"></i> Analisis & Riset</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Kontak</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> Jl. Sudirman No. 123, Jakarta Selatan</p>
+                        <p><i class="fas fa-phone"></i> +62 21 1234 5678</p>
+                        <p><i class="fas fa-envelope"></i> info@bisnispro.co.id</p>
+                        <p><i class="fas fa-clock"></i> Senin - Jumat: 08:00 - 17:00 WIB</p>
+                    </div>
+                </div>
+                
+                <div class="copyright">
+                    <p>&copy; 2023 BisnisPro. Hak Cipta Dilindungi Undang-Undang. | <a href="#" style="color: var(--electric-blue);">Kebijakan Privasi</a> | <a href="#" style="color: var(--electric-blue);">Syarat Penggunaan</a></p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Navigation between pages
+        const navLinks = document.querySelectorAll('.nav-link, .option-card, .footer-nav');
+        const pages = document.querySelectorAll('.page');
+        
+        function navigateToPage(pageId) {
+            // Hide all pages
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            const targetPage = document.getElementById(`${pageId}-page`);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                
+                // Update active nav link
+                navLinks.forEach(link => {
+                    if (link.getAttribute('data-page') === pageId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+                
+                // Close mobile menu if open
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+        }
+        
+        // Add click events to all navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                if (pageId) {
+                    navigateToPage(pageId);
+                }
+            });
+        });
+        
+        // Star rating functionality
+        const stars = document.querySelectorAll('.star');
+        const ratingInput = document.getElementById('rating');
+        const ratingText = document.getElementById('rating-text');
+        
+        const ratingTexts = {
+            0: "Belum diberi rating",
+            1: "Sangat Tidak Puas",
+            2: "Tidak Puas",
+            3: "Cukup Puas",
+            4: "Puas",
+            5: "Sangat Puas"
+        };
+        
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                const value = parseInt(star.getAttribute('data-value'));
+                ratingInput.value = value;
+                
+                // Update star display
+                stars.forEach((s, index) => {
+                    if (index < value) {
+                        s.classList.add('active');
+                    } else {
+                        s.classList.remove('active');
+                    }
+                });
+                
+                // Update rating text
+                ratingText.textContent = ratingTexts[value];
+            });
+            
+            // Hover effect
+            star.addEventListener('mouseenter', () => {
+                const value = parseInt(star.getAttribute('data-value'));
+                stars.forEach((s, index) => {
+                    if (index < value) {
+                        s.style.color = '#fbbf24';
+                    }
+                });
+            });
+            
+            star.addEventListener('mouseleave', () => {
+                const currentRating = parseInt(ratingInput.value);
+                stars.forEach((s, index) => {
+                    if (index >= currentRating) {
+                        s.style.color = '';
+                    }
+                });
+            });
+        });
+        
+        // Form submission
+        const feedbackForm = document.getElementById('feedbackForm');
+        
+        feedbackForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const category = document.getElementById('category').value;
+            const rating = document.getElementById('rating').value;
+            const message = document.getElementById('message').value;
+            
+            // In a real application, you would send this data to a server
+            // For this example, we'll just show an alert
+            
+            alert(`Terima kasih ${name} atas masukan Anda!\n\nMasukan Anda telah berhasil dikirim. Kami akan memproses dan menindaklanjuti masukan Anda segera.`);
+            
+            // Reset form
+            feedbackForm.reset();
+            stars.forEach(star => star.classList.remove('active'));
+            ratingInput.value = "0";
+            ratingText.textContent = ratingTexts[0];
+        });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set initial rating text
+            ratingText.textContent = ratingTexts[0];
+            
+            // Check if there's a page in URL hash
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                navigateToPage(hash);
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
